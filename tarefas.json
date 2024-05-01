@@ -17,12 +17,6 @@
       "periodo": 50,
       "tempo_execucao": 5,
       "prioridade": 3
-    },
-    {
-      "id": "Tarefa4",
-      "periodo": 50,
-      "tempo_execucao": 25,
-      "prioridade": 4
     }
     
   ]

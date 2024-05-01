@@ -114,8 +114,6 @@ int main() {
         utilizacao += (float)tarefas[i].tempo_execucao / tarefas[i].periodo;
     }
 
-    printf("Taxa de Utilização: %.2f\n", utilizacao);
-
     // Verifica se a taxa de utilização é maior que 1 (sistema inviável)
     if (utilizacao > 1) {
         printf("O sistema não é viável.\n");
@@ -139,16 +137,17 @@ int main() {
         printf("Ciclo %d:\n", ciclo);
 
         for (i = 0; i < n_tarefas; i++) {
-            printf("  - %s: tempo de execução = %d, período = %d, prioridade = %d\n",
-                   tarefas[i].id, tarefas[i].tempo_execucao, tarefas[i].periodo, tarefas[i].prioridade);
+            if ((ciclo - 1) * tarefas[i].periodo < mmc) {
+                printf("  - %s: tempo de execução = %d, período = %d, prioridade = %d\n",
+                       tarefas[i].id, tarefas[i].tempo_execucao, tarefas[i].periodo, tarefas[i].prioridade);
+            }
         }
     }
 
     printf("\nResumo:\n");
     printf("-------\n");
     printf("Total de Ciclos: %d\n", totalCiclos);
-    printf("Total de Intercâmbios de Tarefa por Ciclo: %d\n", totalInter);
-    printf("Utilização da CPU: %.2f%%\n", utilizacaoCPU);
+    printf("Utilização da CPU: %.2f%%\n", utilizacao*100);
 
     // Liberação da memória alocada para os IDs das tarefas e do objeto JSON
     for (i = 0; i < n_tarefas; i++) {
