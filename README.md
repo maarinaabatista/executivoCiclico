@@ -53,36 +53,32 @@ Ciclo 1:
   - Tarefa3: tempo de execução = 5, período = 50, prioridade = 3
   - Tarefa1: tempo de execução = 10, período = 100, prioridade = 1
   - Tarefa2: tempo de execução = 20, período = 200, prioridade = 2
-
 Ciclo 2:
   - Tarefa3: tempo de execução = 5, período = 50, prioridade = 3
   - Tarefa1: tempo de execução = 10, período = 100, prioridade = 1
-
 Ciclo 3:
   - Tarefa3: tempo de execução = 5, período = 50, prioridade = 3
-  - Tarefa2: tempo de execução = 20, período = 200, prioridade = 2
-
 Ciclo 4:
   - Tarefa3: tempo de execução = 5, período = 50, prioridade = 3
-  - Tarefa1: tempo de execução = 10, período = 100, prioridade = 1
 
 Resumo:
 -------
 Total de Ciclos: 4
-Total de Intercâmbios de Tarefa por Ciclo: 6
-Utilização da CPU: 85%
+Utilização da CPU: 30.00%
+
+
 ```
 ## Compilação e Execução
 
 Para compilar o projeto, utilize o seguinte comando no terminal:
 
 ```bash
-gcc -o exec_ciclico executivo_ciclico.c -ljson-c
+gcc -o execuCiclicoEXE  executivoCicliclo.c tCiclo.c -ljson-c
 ```
 Para executar o programa, utilize o comando:
 
 ```bash
-./exec_ciclico
+./execuCiclicoEXE
 ```
 
 ## Video Demonstração
