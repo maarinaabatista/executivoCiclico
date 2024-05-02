@@ -9,18 +9,24 @@ O Executivo Cíclico é um modelo de escalonamento comumente utilizado em sistem
    - O tempo de ciclo primário é calculado como o Mínimo Múltiplo Comum (MMC) de todos os períodos das tarefas.
    - O tempo de ciclo secundário é determinado como o Máximo Divisor Comum (MDC) dos períodos das tarefas.
 
-2. **Cálculo do escalonamento usando a heurística SETF**:
+2. **Verificar viabilidade do escalonamento**:
+   -  A taxa de utilização é calculada e partir desse valor foi estabelecida a condição que verifica se o sistema é viável ou não.
+
+3. **Cálculo do escalonamento usando a heurística SETF**:
    - Aplica a heurística Menor Tempo de Execução Primeiro (SETF) para sugerir um escalonamento que prioriza a execução das tarefas com menor tempo de execução.
     - #### Funcionamento
         1. **Ordenação**: As tarefas são ordenadas em ordem crescente de tempo de execução.
         2. **Execução**: O sistema executa as tarefas da fila ordenada, priorizando as mais curtas primeiro.
+           
 ## Estrutura do Projeto
 
 O projeto consiste nos seguintes arquivos:
 
 - `executivoCiclico.c`: Implementação do sistema de Executivo Cíclico.
 - `tarefas.json`: Arquivo de entrada no formato JSON que especifica as informações das tarefas.
-
+- `tCiclo.c`: Implementação das funções que calculam os tempos de ciclo primário e secundário
+- `execuCiclicoEXE`: Código principal compilado
+  
 ## Detalhes de Implementação
 
 - A estrutura `Tarefa` é definida para armazenar as informações de cada tarefa.
