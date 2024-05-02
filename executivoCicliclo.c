@@ -1,46 +1,17 @@
 #include <stdio.h>
 #include <json-c/json.h>
 #include <string.h>
+#include "tCiclo.h"
 
-// Definição da estrutura Tarefa para armazenar informações de cada tarefa
+//Estrutura Tarefa para armazenar informações de cada tarefa
 typedef struct {
     char *id;
     int periodo;
     int tempo_execucao;
     int prioridade;
-    float taxa_periodicidade;
 } Tarefa;
 
-// Função para calcular o Mínimo Múltiplo Comum (MMC) de dois números
-int calcularMMC(int a, int b) {
-    int temp, c;
-    temp = a * b;
-    
-    // Algoritmo de Euclides para calcular o MMC
-    while (b != 0) {
-        c = b;
-        b = a % b;
-        a = c;
-    }
-    
-    return temp / a;
-}
 
-// Função para calcular o Máximo Divisor Comum (MDC) de dois números
-int calcularMDC(int a, int b) {
-    int c;
-    
-    // Algoritmo de Euclides para calcular o MDC
-    while (b != 0) {
-        c = a % b;
-        a = b;
-        b = c;
-    }
-    
-    return a;
-}
-
-// Função de comparação para ordenar as tarefas pelo tempo de execução (Menor Tempo de Execução Primeiro)
 int compararTempoExecucao(const void *a, const void *b) {
     Tarefa *t1 = (Tarefa *)a;
     Tarefa *t2 = (Tarefa *)b;
@@ -93,11 +64,12 @@ int main() {
         tarefas[i].periodo = json_object_get_int(periodo_obj);
         tarefas[i].tempo_execucao = json_object_get_int(tempo_execucao_obj);
         tarefas[i].prioridade = json_object_get_int(prioridade_obj);
-        tarefas[i].taxa_periodicidade = 1.0 / tarefas[i].periodo;
+        
     }
 
     // Ordena as tarefas pelo tempo de execução (Menor Tempo de Execução Primeiro)
     qsort(tarefas, n_tarefas, sizeof(Tarefa), compararTempoExecucao);
+
 
     // Cálculo do MMC e MDC dos períodos das tarefas
     int mmc = tarefas[0].periodo;
@@ -120,10 +92,9 @@ int main() {
         return 1;
     }
 
-    // Cálculo do número total de ciclos e intercâmbios de tarefa por ciclo
+    // Cálculo do número total de ciclos 
     int totalCiclos = mmc / mdc;
-    int totalInter = n_tarefas * totalCiclos;
-    float utilizacaoCPU = ((float)totalInter / totalCiclos) / n_tarefas * 100;
+    
 
     printf("Cálculo de Ciclos para o Executivo Cíclico:\n");
     printf("-------------------------------------------\n");
@@ -133,21 +104,25 @@ int main() {
     printf("\nEscalonamento Sugerido (Heurística: Menor Tempo de Execução Primeiro):\n");
     printf("----------------------------------------------------------------------\n");
 
-    for (int ciclo = 1; ciclo <= totalCiclos; ciclo++) {
-        printf("Ciclo %d:\n", ciclo);
 
+    for (int ciclo = 1; ciclo <= totalCiclos; ciclo++) {
+        
         for (i = 0; i < n_tarefas; i++) {
+            
             if ((ciclo - 1) * tarefas[i].periodo < mmc) {
-                printf("  - %s: tempo de execução = %d, período = %d, prioridade = %d\n",
-                       tarefas[i].id, tarefas[i].tempo_execucao, tarefas[i].periodo, tarefas[i].prioridade);
+                printf("Ciclo %d:\n", ciclo+1);
+                printf("  - %s: Te = %d, P = %d\n",
+                       tarefas[i].id, tarefas[i].tempo_execucao, tarefas[i].periodo);
             }
         }
     }
-
     printf("\nResumo:\n");
     printf("-------\n");
     printf("Total de Ciclos: %d\n", totalCiclos);
     printf("Utilização da CPU: %.2f%%\n", utilizacao*100);
+
+    printf("---------------------");
+    
 
     // Liberação da memória alocada para os IDs das tarefas e do objeto JSON
     for (i = 0; i < n_tarefas; i++) {

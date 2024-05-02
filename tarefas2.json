@@ -1,0 +1,28 @@
+{
+  "tarefas": [
+    {
+      "id": "1",
+      "periodo": 60,
+      "tempo_execucao": 5,
+      "prioridade": 3
+    },
+    {
+      "id": "2",
+      "periodo": 30,
+      "tempo_execucao": 6,
+      "prioridade": 2
+    },
+    {
+      "id": "3",
+      "periodo": 70,
+      "tempo_execucao": 4,
+      "prioridade": 4
+    },
+    {
+      "id": "4",
+      "periodo": 40,
+      "tempo_execucao": 3,
+      "prioridade": 1
+    }
+  ]
+}
