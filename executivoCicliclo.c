@@ -11,7 +11,7 @@ typedef struct {
     int prioridade;
 } Tarefa;
 
-
+// Compara o tempo de execução das tarefas para ordenar e utilizar na heuristica
 int compararTempoExecucao(const void *a, const void *b) {
     Tarefa *t1 = (Tarefa *)a;
     Tarefa *t2 = (Tarefa *)b;
@@ -104,13 +104,13 @@ int main() {
     printf("\nEscalonamento Sugerido (Heurística: Menor Tempo de Execução Primeiro):\n");
     printf("----------------------------------------------------------------------\n");
 
-
+    //loop para implementar o escalonamento e verificar se as tarefas podem ser realizadas nos ciclos menores.
     for (int ciclo = 1; ciclo <= totalCiclos; ciclo++) {
-        
+        printf("Ciclo %d:\n", ciclo);
         for (i = 0; i < n_tarefas; i++) {
             
             if ((ciclo - 1) * tarefas[i].periodo < mmc) {
-                printf("Ciclo %d:\n", ciclo+1);
+                
                 printf("  - %s: Te = %d, P = %d\n",
                        tarefas[i].id, tarefas[i].tempo_execucao, tarefas[i].periodo);
             }

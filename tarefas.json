@@ -3,7 +3,7 @@
     {
       "id": "Tarefa1",
       "periodo": 100,
-      "tempo_execucao": 2,
+      "tempo_execucao": 10,
       "prioridade": 1
     },
     {
@@ -18,6 +18,5 @@
       "tempo_execucao": 5,
       "prioridade": 3
     }
-    
   ]
 }
