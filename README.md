@@ -256,3 +256,5 @@ printf("Utilização da CPU: %.2f%%\n", utilizacao*100);
 
 printf("---------------------");
 ```
+## Video demonstração
+Disponível em: [STR 2 - Executivo Cíclico](https://youtu.be/T4BWuST5xJs) 
