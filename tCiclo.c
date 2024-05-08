@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 
+
 // Função que calcula o Máximo Divisor Comum (MDC) - Tempo de ciclo Secundário
 int calcularMDC(int a, int b) {
     int resto;
